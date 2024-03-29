@@ -1,0 +1,502 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>DELL G7 15 7588 安装 macOS &amp;Windows教程 | Olly's Blog</title><meta name="author" content="Olly Hsu"><meta name="copyright" content="Olly Hsu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="全网最详细的关于戴尔 G7 7588 安装黑苹果及Windows 10教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DELL G7 15 7588 安装 macOS &amp;Windows教程">
+<meta property="og:url" content="https://ollyhsu.github.io/posts/install-hackintosh/">
+<meta property="og:site_name" content="Olly&#39;s Blog">
+<meta property="og:description" content="全网最详细的关于戴尔 G7 7588 安装黑苹果及Windows 10教程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/j.png">
+<meta property="article:published_time" content="2019-10-21T16:00:00.000Z">
+<meta property="article:modified_time" content="2019-10-21T16:00:00.000Z">
+<meta property="article:author" content="Olly Hsu">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="黑果">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/j.png"><link rel="shortcut icon" href="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/logo/logo.ico"><link rel="canonical" href="https://ollyhsu.github.io/posts/install-hackintosh/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=4.13.0"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":180,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Olly Hsu","link":"链接: ","source":"来源: Olly's Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体中文","cht_to_chs":"你已切换为简体中文","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"top-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.11.1/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'DELL G7 15 7588 安装 macOS &Windows教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2019-10-22 00:00:00'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/static/css/diy.min.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/static/css/iconfont.css"><link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/static/css/font-awesome-animation.min.css"><meta name="generator" content="Hexo 7.1.1"><link rel="alternate" href="/atom.xml" title="Olly's Blog" type="application/atom+xml">
+<link rel="alternate" href="/rss2.xml" title="Olly's Blog" type="application/rss+xml">
+</head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/logo/logo.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-tools"></i><span> 工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://ctf.ictf.club/"><i class="fa-fw fa fa-flag"></i><span> CTF平台</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-language"></i><span> Language</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/en/"><i class="fa-fw fas fa-e"></i><span> English</span></a></li><li><a class="site-page child" href="/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="Olly's Blog"><span class="site-name">Olly's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fa fa-heart"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fa fa-link"></i><span> 小伙伴</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-graduation-cap"></i><span> 博文</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fa fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-heartbeat"></i><span> 生活</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/gallery/"><i class="fa-fw fa fa-camera-retro"></i><span> 相册</span></a></li><li><a class="site-page child" href="/music/"><i class="fa-fw fa fa-music"></i><span> 音乐</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fa fa-tools"></i><span> 工具</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" target="_blank" rel="noopener" href="https://ctf.ictf.club/"><i class="fa-fw fa fa-flag"></i><span> CTF平台</span></a></li></ul></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-language"></i><span> Language</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/en/"><i class="fa-fw fas fa-e"></i><span> English</span></a></li><li><a class="site-page child" href="/"><i class="fa-fw fas fa-c"></i><span> 中文</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">DELL G7 15 7588 安装 macOS &amp;Windows教程</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2019-10-21T16:00:00.000Z" title="发表于 2019-10-22 00:00:00">2019-10-22</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2019-10-21T16:00:00.000Z" title="更新于 2019-10-22 00:00:00">2019-10-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%AC%94%E8%AE%B0/Hackintosh/">Hackintosh</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="DELL G7 15 7588 安装 macOS &amp;Windows教程"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h2 id="电脑配置"><strong>电脑配置</strong></h2>
+<table>
+<thead>
+<tr>
+<th>规格</th>
+<th>详细信息</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>电脑型号</td>
+<td>戴尔 G7 7588 笔记本电脑</td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td>Windows 10 专业版 64位</td>
+</tr>
+<tr>
+<td>处理器</td>
+<td>英特尔 Core i7-8750H @ 2.20GHz 六核</td>
+</tr>
+<tr>
+<td>主板</td>
+<td>戴尔 0FDMYT ( HM370 芯片组 )</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>16 GB ( 英睿达 DDR4 2666MHz )</td>
+</tr>
+<tr>
+<td>主硬盘</td>
+<td>西数 WDS100T3X0C-00SJG0 ( 1 TB / 固态硬盘 )</td>
+</tr>
+<tr>
+<td>显卡</td>
+<td>Nvidia GeForce GTX 1060 with Max-Q Design ( 6 GB )</td>
+</tr>
+<tr>
+<td>显示器</td>
+<td>LG LGD0540 ( 15.5 英寸  )</td>
+</tr>
+<tr>
+<td>声卡</td>
+<td>瑞昱  @ 英特尔 High Definition Audio 控制器</td>
+</tr>
+<tr>
+<td>网卡</td>
+<td>鈺硕 Killer e2400 Gigabit Ethernet Controller / 戴尔</td>
+</tr>
+<tr>
+<td>将安装系统</td>
+<td>macOS Mojave 10.14.6</td>
+</tr>
+</tbody>
+</table>
+<p>❗：本机器的内存、硬盘以及无线网卡(1820A)均手动升级过，具体配置请以自己的机器为准。</p>
+<p><code>Q：</code>也许有人会问为什么不安装macOS Catalina 10.15呢？<code>A：</code>其实并不是Catalina不好，主要因为Catalina砍掉了32位应用程序，有的32位应用还是需要使用到的，其次这个Clover在Catalina下优化的并不怎么好，属实有点卡顿，不够流畅</p>
+<h2 id="安装准备"><strong>安装准备</strong></h2>
+<p>❗❗❗ 以下教程会抹掉整个硬盘的数据，请提前做好备份</p>
+<ul>
+<li>Windows操作系统</li>
+<li>USB无线网卡（Intel的无线网卡截止到无解，喜欢拆机折腾的可以直接换网卡型号：DW1560/DW1820）</li>
+<li>16GB USB3.1 U盘*2 （一个用来做Mac安装盘，一个做Windows安装盘，务必保证大于8GB）</li>
+<li><a target="_blank" rel="noopener" href="https://www.balena.io/etcher/">balenaEtcher</a>磁盘写入工具</li>
+<li><a target="_blank" rel="noopener" href="http://www.diskgenius.cn">diskgenius</a>磁盘工具</li>
+<li><a target="_blank" rel="noopener" href="https://blog.daliansky.net/macOS-Mojave-10.14.6-18G87-Release-version-with-Clover-5033-original-image.html">macOS Mojave 10.14.6(18G103)</a> 正式版原版镜像</li>
+<li><a target="_blank" rel="noopener" href="https://www.microsoft.com/zh-cn/software-download/windows10">Windows 10下载工具</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ollyhsu/Dell-G7-7588-Hackintosh">戴尔G7 7588 专用Clover</a></li>
+</ul>
+<h2 id="安装时长">安装时长</h2>
+<ul>
+<li>下载镜像文件（Mac &amp; Win）并制作启动U盘  约 30分钟到40分钟</li>
+<li>安装Mac 约30分钟（使用3.1的U盘速度差不多这个速度，2.0的安装会很慢的）</li>
+<li>安装Win 约30分钟（主要是小娜自己要折腾半天）</li>
+<li>合计约2h+</li>
+</ul>
+<h2 id="环境配置">环境配置</h2>
+<p><strong>1、制作Mac安装盘（第一个U盘）</strong></p>
+<ul>
+<li>
+<p>打开balenaEtcher</p>
+</li>
+<li>
+<p>点击 <code>Select image</code> 打开macOS Mojave 10.14.6(18G87)的镜像</p>
+</li>
+<li>
+<p>点击 <code>Select drive</code> 选择第一个U盘</p>
+</li>
+<li>
+<p>点击 <code>Flash</code> 即可</p>
+</li>
+<li>
+<p>大概要等待<strong>15分钟</strong>左右~</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/balenaEtcher.png" alt="balenaEtcher"></p>
+</li>
+<li>
+<p>制作完成后，不要理会windows的格式化提示</p>
+</li>
+<li>
+<p>打开DiskGenius，选择U盘</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/DiskGenius_01.png" alt="DiskGenius_01"></p>
+</li>
+<li>
+<p>依次点击 <code>ESP分区</code>、<code>浏览文件</code>、<code>EFI</code>文件夹</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/DiskGenius_02.png" alt="DiskGenius_02"></p>
+</li>
+<li>
+<p>打开下载的<code>戴尔G7 7588专用Clover</code>&gt;<code>EFI-lenovoAir-IKB</code>&gt;<code>EFI</code></p>
+</li>
+<li>
+<p>将DiskGenius中<code>EFI</code>文件夹的所有文件替换为<code>戴尔G7 7588专用Clover</code>&gt;<code>EFI-lenovoAir-IKB</code>&gt;<code>EFI</code>的文件</p>
+</li>
+<li>
+<p>Mac安装盘制作完毕，弹出U盘</p>
+</li>
+</ul>
+<p><strong>2、制作Win安装盘（第二个U盘）</strong></p>
+<ul>
+<li>
+<p>打开Win10安装工具,按下图操作</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/image-20210119171648429.png" alt="image-20210119171648429"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/image-20210119171802128.png" alt="image-20210119171802128"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/image-20210119171902859.png" alt="image-20210119171902859"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/image-20210119171943772.png" alt="image-20210119171943772"></p>
+</li>
+<li>
+<p>等待U盘制作完成，弹出U盘</p>
+</li>
+</ul>
+<h2 id="安装Mac系统">安装Mac系统</h2>
+<p>开机，按F12选择U盘引导，左右选择苹果的图标，按enter键，进入然后会上下滚动一段英文日志信息（大概5-6分钟左右，如果卡住，请确认替换的Clover适合您的电脑）</p>
+<p>进入苹果加载页面</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_logo.png" alt="macOS_logo"></p>
+<p>加载完毕后,按下图操作</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Install_Language.png" alt="macOS_Install_Language"></p>
+<p>点击进去之后先在上方菜单栏内找到 <code>终端</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Install_Terminal.png" alt="macOS_Install_Terminal"></p>
+<p>打开终端后输入 <code>date 122320122015.06</code> 设置系统时间</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Install_Terminal_Date.png" alt="macOS_Install_Terminal_Date"></p>
+<p>否则直接安装macOS会出现提示应用程序副本已损坏的错误</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/image-20210119172845414.png" alt="image-20210119172845414"></p>
+<p>退出终端后，再去进行分区处理。</p>
+<p>点击 <code>磁盘工具</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Install_2.png" alt="macOS_Install_2"></p>
+<p>选择 <code>显示所有设备</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Install_3.png" alt="macOS_Install_3"></p>
+<p>找到你需要安装macOS系统的分区,后抹掉，改下分区名为Mojave吧</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Install_4.png" alt="macOS_Install_4"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Install_5.png" alt="macOS_Install_5"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Install_6.png" alt="macOS_Install_6"></p>
+<p>接下来，我们要新建一个空分区，方便我们后续安装Win10操作系统</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Win10_disk.png" alt="macOS_Win10_disk"></p>
+<p>进入分区管理界面，单击下面的 ➕</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Win10_disk2.png" alt="macOS_Win10_disk2"></p>
+<p>设置分区名为Win10，格式选ExFAT，千万不要去选macOS扩展（日志式）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Win10_disk3.png" alt="macOS_Win10_disk3"></p>
+<p>点击应用后再点击<code>分区</code>，然后等待操作结束，退出磁盘工具</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Win10_disk4.png" alt="macOS_Win10_disk4"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Win10_disk5.png" alt="macOS_Win10_disk5"></p>
+<p>好了，到此为止，所有的安装准备都做好了，接下来就可以进行正式安装macOS</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/macOS_Install01.png" alt="macOS_Install01"></p>
+<p>接下来都是继续或者同意。相信凭你的聪明才智这难不倒你的。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/WdVQJU-202003241444-fbpVLH.png" alt="WdVQJU-202003241444-fbpVLH"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/p321SI-202003241445-g8lVx1.png" alt="p321SI-202003241445-g8lVx1"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/rGwrjH-202003241446-4HB930.png" alt="rGwrjH-202003241446-4HB930"></p>
+<p>选择刚刚分区好的Mojave分区（macOS扩展（日志式）格式）去安装macOS系统</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/B9lZQW-202003241531-kmK8Es.png" alt="B9lZQW-202003241531-kmK8Es"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/g1Du1c-202003241532-TO2Y1M.png" alt="g1Du1c-202003241532-TO2Y1M"></p>
+<p>它会把USB安装盘上的安装文件预复制到要安装的系统分区里，这个过程通常会持续1-2分钟</p>
+<p>等待系统将安装程序复制到硬盘内，完成之后会自动重启。重启一定要选从U盘引导，因为你的Clover目前还在U盘内，建议在启动顺序内将U盘启动设置为第一启动顺序</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/image-20210119192342503.png" alt="image-20210119192342503"></p>
+<ul>
+<li>重启引导的时候记得要选择第二个苹果图标Boot install from XXX（你的分区名，图片是以前的有点小误差）</li>
+<li>第一个是从U盘引导安装，第二个是从硬盘安装</li>
+<li>如果你使用的和我一样的EFI，那么这里会自动选择，或者你将U盘拔下就不会出错了。</li>
+<li>然后最后一次重启是只有一个苹果，下面有安装进度条，这个时候就可以去找一部电影看看了</li>
+<li>半小时候再回来~</li>
+<li>安装很慢的…慢慢等吧…</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/LMib99-202003241450-cqTD21.png" alt="LMib99-202003241450-cqTD21"></p>
+<p>安装完成，第一次引导启动也很慢（5-10分钟左右,Clover开启啰嗦模式则会在屏幕上输出一大堆日志信息）</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/O9yyTL-202003241511-z6tpdl.png" alt="O9yyTL-202003241511-z6tpdl"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/XiewPM-202003241512-eYOvpY.png" alt="XiewPM-202003241512-eYOvpY"></p>
+<p>这里有个坑，就是千万不要联网，Apple ID在进入系统后在设置</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/UOfMmr-202003241512-fvb1oI.png" alt="UOfMmr-202003241512-fvb1oI"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/ZFvBQL-202003241512-x3eOPH.png" alt="ZFvBQL-202003241512-x3eOPH"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/AhfcNG-202003241513-tt1ApL.png" alt="AhfcNG-202003241513-tt1ApL"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/YTnI7C-202003241513-1wNrwK.png" alt="YTnI7C-202003241513-1wNrwK"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/XMK2Gd-202003241513-lbEqBu.png" alt="XMK2Gd-202003241513-lbEqBu"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/F4teWU-202003241513-4A5nww.png" alt="F4teWU-202003241513-4A5nww"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/K5IEug-202003241514-TsjqGb.png" alt="K5IEug-202003241514-TsjqGb"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/4Oolo7-202003241515-r5Z75m.png" alt="4Oolo7-202003241515-r5Z75m"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/kmVhbm-202003241516-387j52.png" alt="kmVhbm-202003241516-387j52"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/JYEeL4-202003241516-bVafmI.png" alt="JYEeL4-202003241516-bVafmI"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/UTVpPn-202003241516-G1wK9e.png" alt="UTVpPn-202003241516-G1wK9e"></p>
+<p>至此，戴尔G7 macOS就已经完全安装好了，自己玩吧。</p>
+<h2 id="设置硬盘引导">设置硬盘引导</h2>
+<ol>
+<li>打开Mac上的终端</li>
+<li>输入 <code>diskutil list</code> 出现类似的页面</li>
+</ol>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/PicBed@master/2021/01/V5M9FX-202003241704-5CUoUo.png" alt="V5M9FX-202003241704-5CUoUo"></p>
+<p>挂载EFI分区 <code>sudo diskutil mount disk0s1</code></p>
+<ol>
+<li><strong>注意磁盘编号与自己实际的磁盘编号，不要照抄，要灵活变通</strong></li>
+<li>打开这两个分区（在桌面上，桌面上没有的话，在访达里找），直接将USB的EFI分区下面的EFI目录直接复制到磁盘上的EFI分区里.</li>
+</ol>
+<h2 id="安装Win10">安装Win10</h2>
+<ol>
+<li>开机时按F12，选择U盘启动</li>
+<li>然后按照正常的windows <a href="../install-win10/">安装流程（点我）</a>来，从<strong>系统安装</strong>开始看。</li>
+<li>到第十五步的时候，选择安装位置之前，一定要选择第二个分区，因为之前用第一个分区装的Mac，选择第二个分区后要格式化，然后继续按教程安装</li>
+</ol>
+<h2 id="设置EFI引导">设置EFI引导</h2>
+<p>进入PE后打开BOOTICE软件，选择物理磁盘，选择欲操作的目标磁盘，点击分区管理</p>
+<p>弹出分区管理的窗口，点击分配盘符，为ESP分区分配一个盘符</p>
+<p>点击确定</p>
+<p>选择UEFI，点击修改启动序列，点击添加按钮，选择启动文件，在打开的窗口里选择ESP分区下的目录</p>
+<p><code>\EFI\CLOVER\CLOVERX64.EFI</code>，菜单标题填写:CLOVER，调节该项到第一位</p>
+<p>点击保存当前启动项设置</p>
+<h2 id="完成安装">完成安装</h2>
+<p>重新启动就能使用win和mac双系统啦~</p>
+<h2 id="后记">后记</h2>
+<p>装个Mac折腾了半天~这个镜像已经把各种补丁驱动已经装好了，直接用就行，无线网卡使用外接usb WiFi就行 当然，你可以把原来的网卡拆掉换成可以用黑苹果的网卡，看看自己的接口去某宝找1820A等无线网卡。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://ollyhsu.github.io">Olly Hsu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://ollyhsu.github.io/posts/install-hackintosh/">https://ollyhsu.github.io/posts/install-hackintosh/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://ollyhsu.github.io" target="_blank">Olly's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/%E9%BB%91%E6%9E%9C/">黑果</a></div><div class="post_share"><div class="social-share" data-image="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/j.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/qrcode/zfbskm.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/qrcode/zfbskm.png" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li><li class="reward-item"><a href="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/qrcode/wxskm.png" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/qrcode/wxskm.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/94633aa6/" title="macOS安装Homebrew教程"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/o.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">macOS安装Homebrew教程</div></div></a></div><div class="next-post pull-right"><a href="/posts/35599f1b/" title="Kali Linux 更换镜像源"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/d.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Kali Linux 更换镜像源</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/logo/logo.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Olly Hsu</div><div class="author-info__description">你的假装努力，欺骗的只有你自己！</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">23</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/ollyhsu"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/ollyhsu" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="https://blog.csdn.net/ollyhsu" target="_blank" title=""><i class="iconfont icon-CSDN"></i></a><a class="social-icon" href="/atom.xml" target="_blank" title=""><i class="iconfont icon-RSS"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">感谢访问小站 ^_^</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">电脑配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%87%86%E5%A4%87"><span class="toc-number">2.</span> <span class="toc-text">安装准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%97%B6%E9%95%BF"><span class="toc-number">3.</span> <span class="toc-text">安装时长</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="toc-number">4.</span> <span class="toc-text">环境配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Mac%E7%B3%BB%E7%BB%9F"><span class="toc-number">5.</span> <span class="toc-text">安装Mac系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E7%A1%AC%E7%9B%98%E5%BC%95%E5%AF%BC"><span class="toc-number">6.</span> <span class="toc-text">设置硬盘引导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Win10"><span class="toc-number">7.</span> <span class="toc-text">安装Win10</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEEFI%E5%BC%95%E5%AF%BC"><span class="toc-number">8.</span> <span class="toc-text">设置EFI引导</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%8C%E6%88%90%E5%AE%89%E8%A3%85"><span class="toc-number">9.</span> <span class="toc-text">完成安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8E%E8%AE%B0"><span class="toc-number">10.</span> <span class="toc-text">后记</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/yuque-hexo/" title="自动同步语雀文档至Hexo博客"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/o.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="自动同步语雀文档至Hexo博客"/></a><div class="content"><a class="title" href="/posts/yuque-hexo/" title="自动同步语雀文档至Hexo博客">自动同步语雀文档至Hexo博客</a><time datetime="2021-12-30T22:48:01.000Z" title="发表于 2021-12-31 06:48:01">2021-12-31</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/ctfd/" title="CTFd动态靶场环境部署笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/j.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CTFd动态靶场环境部署笔记"/></a><div class="content"><a class="title" href="/posts/ctfd/" title="CTFd动态靶场环境部署笔记">CTFd动态靶场环境部署笔记</a><time datetime="2021-08-01T03:29:35.000Z" title="发表于 2021-08-01 11:29:35">2021-08-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/termius/" title="Termius破解版修改方法"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/g.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Termius破解版修改方法"/></a><div class="content"><a class="title" href="/posts/termius/" title="Termius破解版修改方法">Termius破解版修改方法</a><time datetime="2021-05-17T12:13:14.000Z" title="发表于 2021-05-17 20:13:14">2021-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/e4a50494/" title="Kali Linux 2021.1 超详细安装笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/f.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Kali Linux 2021.1 超详细安装笔记"/></a><div class="content"><a class="title" href="/posts/e4a50494/" title="Kali Linux 2021.1 超详细安装笔记">Kali Linux 2021.1 超详细安装笔记</a><time datetime="2021-02-27T13:12:13.000Z" title="发表于 2021-02-27 21:12:13">2021-02-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/38f2069e/" title="手动安装 Windows 的 Linux子系统"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/image/letter/b.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="手动安装 Windows 的 Linux子系统"/></a><div class="content"><a class="title" href="/posts/38f2069e/" title="手动安装 Windows 的 Linux子系统">手动安装 Windows 的 Linux子系统</a><time datetime="2020-09-21T12:12:13.000Z" title="发表于 2020-09-21 20:12:13">2020-09-21</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2018 - 2024 By Olly Hsu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=4.13.0"></script><script src="/js/main.js?v=4.13.0"></script><script src="/js/tw_cn.js?v=4.13.0"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.33/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page@5.2.0/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.8.8/dist/lazyload.iife.min.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar@0.1.16/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addGlobalFn('themeChange', runMermaid, 'mermaid')
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const abcjsInit = () => {
+    const abcjsFn = () => {
+      document.querySelectorAll(".abc-music-sheet").forEach(ele => {
+        ABCJS.renderAbc(ele, ele.innerHTML, {responsive: 'resize'})
+      })
+    }
+    
+    typeof ABCJS === 'object' ? abcjsFn()
+      : getScript('https://cdn.jsdelivr.net/npm/abcjs@6.3.0/dist/abcjs-basic-min.min.js').then(abcjsFn)
+  }
+
+  window.pjax ? abcjsInit() : window.addEventListener('load', abcjsInit)
+})()</script></div><div class="aplayer no-destroy" data-id="6986681305" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-autoplay="false" data-theme="#2980b9" data-loop="all" data-order="list" data-preload="auto" data-volume="0.3" data-mutex="true" data-lrctype="0" data-listFolded="false" data-listmaxheight="340px" data-storagename="metingjs" muted></div><script src="https://fastly.jsdelivr.net/gh/ollyhsu/hexo_cdn@main/static/js/diy.min.js"></script><canvas class="fireworks" mobile="false"></canvas><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/fireworks.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener
+  btf.removeGlobalFnEvent('pjax')
+  btf.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=4.13.0"></script></div></div></body></html>
